@@ -3,7 +3,7 @@ package com.majiang.controller;
 import com.majiang.dto.AccessTokenDTO;
 import com.majiang.dto.GithubUser;
 
-import com.majiang.pojo.User;
+
 import com.majiang.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,12 +45,11 @@ public class CallController {
         accessTokenDTO.setCode(code);
         accessTokenDTO.setRedirect_uri(redirect_uri);
         accessTokenDTO.setState(state);
-        System.out.println("我是 accounutdto#"+accessTokenDTO);
-        System.out.println("excute#######+getAccountToken");
         String accessToken = githubProvider.getAccountToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
 
-        System.out.println("判断执行前是githubUser.getName否为空"+githubUser.getName());
+        System.out.println(githubUser.getName());
+        System.out.println(githubUser);
 //        if(githubUser !=null){
 //            User user = new User();
 //            user.setAccountId(String.valueOf(githubUser.getId()));
