@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@MapperScan("life.majiang.community.mapper.*")
-@ComponentScan(basePackages = {"com.majiang.mapper.*"})
+//@MapperScan("life.majiang.community.mapper.*")
+//@ComponentScan(basePackages = {"com.majiang.mapper.*"})
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class Community5Application {
 

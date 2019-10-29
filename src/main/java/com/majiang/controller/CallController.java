@@ -2,7 +2,7 @@ package com.majiang.controller;
 
 import com.majiang.dto.AccessTokenDTO;
 import com.majiang.dto.GithubUser;
-import com.majiang.mapper.UserMapper;
+
 import com.majiang.pojo.User;
 import com.majiang.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +29,7 @@ public class CallController {
     private String clientSecret;
     @Value("${githun.redirect.url}")
     private String redirect_uri;
-    @Autowired
-    public UserMapper usermapper;
+
 
 
     //80e16c95f661383c8cb9c3859adb2dc33c7bb2b1
@@ -52,28 +51,28 @@ public class CallController {
         GithubUser githubUser = githubProvider.getUser(accessToken);
 
         System.out.println("判断执行前是githubUser.getName否为空"+githubUser.getName());
-        if(githubUser !=null){
-            User user = new User();
-            user.setAccountId(String.valueOf(githubUser.getId()));
-            user.setToken(UUID.randomUUID().toString());
-            user.setName(githubUser.getName());
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
-            usermapper.insert(user);
-            System.out.println("插入成功");
-            request.getSession().setAttribute("user",githubUser);
-            return "redirect:/";
-
-        }else{
-            System.out.println("登陆失败");
-            return "redirect:/";
-        }
-
-
+//        if(githubUser !=null){
+//            User user = new User();
+//            user.setAccountId(String.valueOf(githubUser.getId()));
+//            user.setToken(UUID.randomUUID().toString());
+//            user.setName(githubUser.getName());
+//            user.setGmtCreate(System.currentTimeMillis());
+//            user.setGmtModified(user.getGmtCreate());
+//            usermapper.insert(user);
+//            System.out.println("插入成功");
+//            request.getSession().setAttribute("user",githubUser);
+//            return "redirect:/";
+//
+//        }else{
+//            System.out.println("登陆失败");
+//            return "redirect:/";
+//        }
 
 
 
 
+
+         return "redirect:/";
     }
 
 }
